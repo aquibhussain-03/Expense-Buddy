@@ -55,14 +55,18 @@ const Root = () => {
       localStorage.removeItem('token');
       localStorage.removeItem('userName');
       localStorage.removeItem('profileImage');
+      sessionStorage.removeItem('authenticated');
       return <Navigate to="/login" replace />;
     }
     
+    // Set session auth for valid token
+    sessionStorage.setItem('authenticated', 'true');
     return <Navigate to="/dashboard" replace />;
   } catch (error) {
     localStorage.removeItem('token');
     localStorage.removeItem('userName');
     localStorage.removeItem('profileImage');
+    sessionStorage.removeItem('authenticated');
     return <Navigate to="/login" replace />;
   }
 };

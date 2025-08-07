@@ -66,7 +66,7 @@ const PieChart = ({ transactions, type = 'expense' }) => {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden">
       <div className={`bg-gradient-to-r ${colorMap[type]} px-6 py-4`}>
         <div className="flex items-center justify-between">
           <div>
@@ -115,8 +115,8 @@ const PieChart = ({ transactions, type = 'expense' }) => {
               {chartType === 'donut' && (
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
-                    <p className="text-2xl font-bold text-gray-800">{topCategories.length}</p>
-                    <p className="text-sm text-gray-500">Categories</p>
+                    <p className="text-2xl font-bold text-gray-800 dark:text-gray-100">{topCategories.length}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Categories</p>
                   </div>
                 </div>
               )}
@@ -127,17 +127,17 @@ const PieChart = ({ transactions, type = 'expense' }) => {
               {topCategories.map(([category, amount], index) => {
                 const percentage = ((amount / total) * 100).toFixed(1);
                 return (
-                  <div key={category} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <div key={category} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
                     <div className="flex items-center space-x-3">
                       <div 
                         className="w-4 h-4 rounded-full" 
                         style={{ backgroundColor: CHART_COLORS[index] }}
                       ></div>
-                      <span className="font-medium text-gray-700">{category}</span>
+                      <span className="font-medium text-gray-700 dark:text-gray-200">{category}</span>
                     </div>
                     <div className="text-right">
-                      <p className="font-bold text-gray-800">{formatCurrency(amount)}</p>
-                      <p className="text-sm text-gray-500">{percentage}%</p>
+                      <p className="font-bold text-gray-800 dark:text-gray-100">{formatCurrency(amount)}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">{percentage}%</p>
                     </div>
                   </div>
                 );
@@ -146,11 +146,11 @@ const PieChart = ({ transactions, type = 'expense' }) => {
           </div>
         ) : (
           <div className="text-center py-12">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl text-gray-400">📊</span>
             </div>
-            <p className="text-gray-500 font-medium">No {type} data available</p>
-            <p className="text-gray-400 text-sm mt-1">Add some {type} transactions to see the breakdown</p>
+            <p className="text-gray-500 dark:text-gray-400 font-medium">No {type} data available</p>
+            <p className="text-gray-400 dark:text-gray-500 text-sm mt-1">Add some {type} transactions to see the breakdown</p>
           </div>
         )}
       </div>

@@ -14,26 +14,26 @@ const TransactionList = ({ transactions, onEdit }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
-      <div className="px-6 py-4 border-b">
-        <h3 className="text-lg font-semibold">Recent Transactions</h3>
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-100 dark:border-gray-700 overflow-hidden">
+      <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Recent Transactions</h3>
       </div>
       
       <div className="max-h-96 overflow-y-auto">
         {transactions.length === 0 ? (
-          <p className="text-gray-500 text-center py-8">No transactions found</p>
+          <p className="text-gray-500 dark:text-gray-400 text-center py-8">No transactions found</p>
         ) : (
           transactions.map((transaction) => (
             <div
               key={transaction._id}
-              className="px-6 py-4 border-b hover:bg-gray-50 transition-colors relative"
+              className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors relative"
               onMouseEnter={() => setHoveredId(transaction._id)}
               onMouseLeave={() => setHoveredId(null)}
             >
               <div className="flex items-center justify-between">
                 <div className="flex-1">
                   <div className="flex items-center justify-between">
-                    <h4 className="font-medium text-gray-900">{transaction.title}</h4>
+                    <h4 className="font-medium text-gray-900 dark:text-white">{transaction.title}</h4>
                     <span className={`font-semibold ${
                       transaction.type === 'income' ? 'text-green-600' : 'text-red-600'
                     }`}>
@@ -41,11 +41,11 @@ const TransactionList = ({ transactions, onEdit }) => {
                     </span>
                   </div>
                   <div className="flex items-center justify-between mt-1">
-                    <span className="text-sm text-gray-500">{transaction.category}</span>
-                    <span className="text-sm text-gray-500">{formatDate(transaction.date)}</span>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">{transaction.category}</span>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">{formatDate(transaction.date)}</span>
                   </div>
                   {transaction.description && (
-                    <p className="text-sm text-gray-600 mt-1">{transaction.description}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">{transaction.description}</p>
                   )}
                 </div>
                 

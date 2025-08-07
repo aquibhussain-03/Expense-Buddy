@@ -47,10 +47,10 @@ const Income = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="space-y-8 animate-fadeIn">
         {/* Header */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 border border-gray-100 dark:border-gray-700">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <div className="p-3 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl">
@@ -60,12 +60,12 @@ const Income = () => {
                 <h1 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
                   Income
                 </h1>
-                <p className="text-gray-600 mt-1">Total: ${totalIncome.toFixed(2)} • {incomeTransactions.length} transactions</p>
+                <p className="text-gray-600 dark:text-gray-300 mt-1">Total: ${totalIncome.toFixed(2)} • {incomeTransactions.length} transactions</p>
               </div>
             </div>
             <button
               onClick={() => setShowForm(true)}
-              className="flex items-center px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              className="flex items-center px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative z-10"
             >
               <FiPlus className="mr-2" size={18} />
               Add Income
@@ -77,7 +77,7 @@ const Income = () => {
           {/* Form */}
           <div className="xl:col-span-1">
             {showForm ? (
-              <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden transform transition-all duration-300 animate-slideIn">
+              <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden transform transition-all duration-300 animate-slideIn">
                 <div className="bg-gradient-to-r from-green-500 to-emerald-600 px-6 py-4">
                   <div className="flex items-center justify-between">
                     <h2 className="text-lg font-semibold text-white">
@@ -100,12 +100,12 @@ const Income = () => {
                 </div>
               </div>
             ) : (
-              <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 text-center">
+              <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-8 text-center">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <FiPlus className="text-green-600" size={24} />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Ready to add income?</h3>
-                <p className="text-gray-600">Click the "Add Income" button to get started</p>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Ready to add income?</h3>
+                <p className="text-gray-600 dark:text-gray-300">Click the "Add Income" button to get started</p>
               </div>
             )}
           </div>

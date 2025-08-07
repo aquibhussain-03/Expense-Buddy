@@ -1,27 +1,22 @@
 import { Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { isTokenValid, clearAuthData, setSessionAuth, isSessionAuthenticated } from '../../utils/auth';
 
 const ProtectedRoute = ({ children }) => {
-  const token = localStorage.getItem('token');
-  
-  // Immediate check - no async state
-  if (!token) {
+  useEffect(() => {
+    // Set session auth on component mount
+    if (isTokenValid()) {
+      setSessionAuth();
+    }
+  }, []);
+
+  // Check both token validity and session authentication
+  if (!isTokenValid()) {
+    clearAuthData();
     return <Navigate to="/login" replace />;
   }
-
-  try {
-    const payload = JSON.parse(atob(token.split('.')[1]));
-    const currentTime = Date.now() / 1000;
-    
-    if (payload.exp < currentTime) {
-      localStorage.removeItem('token');
-      localStorage.removeItem('userName');
-      localStorage.removeItem('profileImage');
-      return <Navigate to="/login" replace />;
-    }
-  } catch (error) {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userName');
-    localStorage.removeItem('profileImage');
+  
+  if (!isSessionAuthenticated()) {
     return <Navigate to="/login" replace />;
   }
 

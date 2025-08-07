@@ -22,9 +22,9 @@ const SignUp = () => {
         {/* Logo/Brand */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-600 to-blue-600 rounded-full mb-4">
-            <span className="text-2xl font-bold text-white">ET</span>
+            <span className="text-2xl font-bold text-white">EB</span>
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Join ExpenseTracker</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Join ExpenseBuddy</h1>
           <p className="text-gray-600">Create your account and start managing your finances</p>
         </div>
 
@@ -49,7 +49,7 @@ const SignUp = () => {
                     }
                   })}
                   type="text"
-                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white text-black font-medium"
                   placeholder="Enter your full name"
                 />
               </div>
@@ -79,7 +79,7 @@ const SignUp = () => {
                     }
                   })}
                   type="email"
-                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white text-black font-medium"
                   placeholder="Enter your email"
                 />
               </div>
@@ -109,7 +109,7 @@ const SignUp = () => {
                     }
                   })}
                   type={showPassword ? 'text' : 'password'}
-                  className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                  className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white text-black font-medium"
                   placeholder="Create a password"
                 />
                 <button
@@ -147,7 +147,7 @@ const SignUp = () => {
                     validate: value => value === password || 'Passwords do not match'
                   })}
                   type={showConfirmPassword ? 'text' : 'password'}
-                  className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                  className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white text-black font-medium"
                   placeholder="Confirm your password"
                 />
                 <button

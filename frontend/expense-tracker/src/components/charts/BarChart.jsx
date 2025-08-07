@@ -77,7 +77,7 @@ const BarChart = ({ transactions }) => {
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
+    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-100 dark:border-gray-700">
       <Bar data={data} options={options} />
     </div>
   );

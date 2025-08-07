@@ -12,6 +12,7 @@ export const useLogin = () => {
     onSuccess: (response) => {
       setAuthToken(response.data.token);
       localStorage.setItem('userName', response.data.name);
+      sessionStorage.setItem('authenticated', 'true');
       toast.success('Login successful!');
       navigate('/dashboard');
     },
@@ -29,6 +30,7 @@ export const useRegister = () => {
     onSuccess: (response) => {
       setAuthToken(response.data.token);
       localStorage.setItem('userName', response.data.name);
+      sessionStorage.setItem('authenticated', 'true');
       toast.success('Registration successful!');
       navigate('/dashboard');
     },
@@ -43,7 +45,8 @@ export const useLogout = () => {
   const queryClient = useQueryClient();
   
   return () => {
-    removeAuthToken();
+    // Only clear session storage for current tab
+    sessionStorage.removeItem('authenticated');
     queryClient.clear();
     toast.success('Logged out successfully');
     navigate('/login');

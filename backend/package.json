@@ -1,7 +1,7 @@
 {
-  "name": "expense-tracker-backend",
+  "name": "expense-buddy-backend",
   "version": "1.0.0",
-  "description": "Backend for Expense Tracker MERN app",
+  "description": "Backend for Expense Buddy MERN app",
   "main": "server.js",
   "type": "module",
   "scripts": {

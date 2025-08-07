@@ -18,6 +18,10 @@
     background-color: #fcfbfc;
     overflow-x: hidden;
   }
+  .dark body{
+    background-color: #0f172a;
+    color: #f1f5f9;
+  }
 }
 
 @layer utilities {

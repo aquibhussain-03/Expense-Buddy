@@ -32,7 +32,7 @@ app.use('/api/transactions', transactionRoutes);
 app.use('/api/profile', profileRoutes);
 
 app.get('/', (req, res) => {
-  res.json({ message: 'Expense Tracker API is running!' });
+  res.json({ message: 'Expense Buddy API is running!' });
 });
 
 app.listen(PORT, () => {

@@ -5,9 +5,14 @@ import { FiMail, FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
 import { useLogin } from '../../hooks/useAuth';
 
 const Login = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const loginMutation = useLogin();
   const [showPassword, setShowPassword] = React.useState(false);
+
+  // Clear form on component mount to prevent autofill
+  React.useEffect(() => {
+    reset({ email: '', password: '' });
+  }, [reset]);
 
   const onSubmit = (data) => {
     loginMutation.mutate(data);
@@ -19,15 +24,15 @@ const Login = () => {
         {/* Logo/Brand */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full mb-4">
-            <span className="text-2xl font-bold text-white">ET</span>
+            <span className="text-2xl font-bold text-white">EB</span>
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">ExpenseTracker</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">ExpenseBuddy</h1>
           <p className="text-gray-600">Welcome back! Please sign in to your account</p>
         </div>
 
         {/* Login Form */}
         <div className="bg-white rounded-2xl shadow-xl p-8">
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false">
             {/* Email Field */}
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -46,7 +51,12 @@ const Login = () => {
                     }
                   })}
                   type="email"
-                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                  autoComplete="new-email"
+                  autoCorrect="off"
+                  autoCapitalize="off"
+                  spellCheck="false"
+                  data-form-type="other"
+                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white text-black font-medium"
                   placeholder="Enter your email"
                 />
               </div>
@@ -76,7 +86,12 @@ const Login = () => {
                     }
                   })}
                   type={showPassword ? 'text' : 'password'}
-                  className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                  autoComplete="new-password"
+                  autoCorrect="off"
+                  autoCapitalize="off"
+                  spellCheck="false"
+                  data-form-type="other"
+                  className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white text-black font-medium"
                   placeholder="Enter your password"
                 />
                 <button

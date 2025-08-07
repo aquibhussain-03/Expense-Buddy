@@ -1,42 +1,40 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { isTokenValid, clearAuthData, setSessionAuth, clearSessionAuth } from '../../utils/auth';
 
 const AuthGuard = ({ children }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
     const checkAuth = () => {
-      const token = localStorage.getItem('token');
-      
-      if (!token) {
+      if (!isTokenValid()) {
+        clearAuthData();
+        clearSessionAuth();
         navigate('/login', { replace: true });
         return;
       }
+      setSessionAuth();
+    };
 
-      try {
-        const payload = JSON.parse(atob(token.split('.')[1]));
-        const currentTime = Date.now() / 1000;
-        
-        if (payload.exp < currentTime) {
-          localStorage.removeItem('token');
-          localStorage.removeItem('userName');
-          localStorage.removeItem('profileImage');
-          navigate('/login', { replace: true });
-        }
-      } catch (error) {
-        localStorage.removeItem('token');
-        localStorage.removeItem('userName');
-        localStorage.removeItem('profileImage');
+    // Check auth on mount and window focus
+    checkAuth();
+    
+    const handleFocus = () => checkAuth();
+    const handleStorage = (e) => {
+      // Only logout all tabs if token is completely removed
+      if (e.key === 'token' && !e.newValue) {
+        clearSessionAuth();
         navigate('/login', { replace: true });
       }
     };
 
-    const handleFocus = () => {
-      checkAuth();
-    };
-
     window.addEventListener('focus', handleFocus);
-    return () => window.removeEventListener('focus', handleFocus);
+    window.addEventListener('storage', handleStorage);
+    
+    return () => {
+      window.removeEventListener('focus', handleFocus);
+      window.removeEventListener('storage', handleStorage);
+    };
   }, [navigate]);
 
   return children;

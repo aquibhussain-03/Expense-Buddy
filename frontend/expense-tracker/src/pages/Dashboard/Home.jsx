@@ -1,44 +1,32 @@
 import React from 'react';
-import { FiDollarSign, FiTrendingUp, FiTrendingDown, FiDownload, FiActivity } from 'react-icons/fi';
+import { FiDollarSign, FiTrendingUp, FiTrendingDown, FiActivity } from 'react-icons/fi';
 import StatsCard from '../../components/ui/StatsCard';
 import TransactionList from '../../components/ui/TransactionList';
 import PieChart from '../../components/charts/PieChart';
 import BarChart from '../../components/charts/BarChart';
 import { useTransactions, useTransactionStats } from '../../hooks/useTransactions';
-import { exportToExcel } from '../../utils/helper';
 
 const Home = () => {
   const { data: transactions = [], isLoading: transactionsLoading } = useTransactions();
   const { data: stats = {}, isLoading: statsLoading } = useTransactionStats();
 
-  const handleExport = () => {
-    exportToExcel(transactions, 'expense-tracker-transactions');
-  };
+
 
   if (transactionsLoading || statsLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-lg text-gray-600">Loading your dashboard...</p>
+          <p className="text-lg text-gray-600 dark:text-gray-300">Loading your dashboard...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="space-y-8 animate-fadeIn">
-        {/* Export Button */}
-        <div className="flex justify-end mb-6">
-          <button
-            onClick={handleExport}
-            className="flex items-center px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-          >
-            <FiDownload className="mr-2" size={18} />
-            Export to Excel
-          </button>
-        </div>
+
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
