@@ -1,4 +1,4 @@
-# 💰 Expense Tracker - MERN Stack
+# 💰 ExpenseBuddy - MERN Stack
 
 <div align="center">
   <img src="https://img.shields.io/badge/React-19.1.0-61DAFB?style=for-the-badge&logo=react&logoColor=white" />
@@ -8,15 +8,18 @@
 </div>
 
 <p align="center">
-  A modern, full-stack expense tracking application with real-time analytics, secure authentication, and beautiful data visualizations.
+  A modern, full-stack expense tracking application with dark theme support, enhanced security, real-time analytics, and beautiful data visualizations.
 </p>
 
 ## ✨ Features
 
 ### 🔐 Authentication & Security
-- JWT-based secure login and registration
-- Protected routes with token validation
+- JWT-based secure login and registration with enhanced session management
+- Tab-specific authentication (logout affects only current tab)
+- Protected routes with token validation and session monitoring
 - Profile picture upload with server-side storage
+- Autofill prevention on login/signup forms
+- Cross-tab authentication synchronization
 
 ### 📊 Dashboard & Analytics
 - Real-time financial overview with balance tracking
@@ -32,14 +35,17 @@
 
 ### 🎨 Modern UI/UX
 - Responsive design with Tailwind CSS
+- **Dark/Light theme toggle** with cross-tab synchronization
+- Modern white sidebar with glassmorphism effects
 - Gradient backgrounds and smooth animations
-- Dark sidebar with modern navigation
 - Loading states and error handling
+- Fixed sidebar layout (288px width) for consistent navigation
 
 ### 📥 Data Export
-- Excel export functionality
+- **Integrated Excel export** button in sidebar
 - Formatted transaction reports
 - Download transaction history
+- One-click export from navigation
 
 ## 🛠️ Tech Stack
 
@@ -61,12 +67,14 @@
 ### Frontend
 - **Framework**: React 19 with Vite
 - **State Management**: TanStack Query (React Query)
-- **Forms**: React Hook Form
-- **Routing**: React Router v7
-- **Styling**: Tailwind CSS
+- **Forms**: React Hook Form with autofill prevention
+- **Routing**: React Router v7 with enhanced protection
+- **Styling**: Tailwind CSS with dark mode support
+- **Theme Management**: Custom useTheme hook with localStorage sync
 - **Charts**: Chart.js & React-Chartjs-2
 - **Notifications**: React Hot Toast
 - **HTTP Client**: Axios
+- **Authentication**: Enhanced session-based auth utilities
 
 </td>
 </tr>
@@ -160,11 +168,14 @@ npm run dev
     │   │   ├── 🎨 layout/
     │   │   └── 🧩 ui/
     │   ├── 📂 hooks/
+    │   │   ├── 🎨 useTheme.js
+    │   │   └── 🔐 useAuth.js
     │   ├── 📂 pages/
     │   │   ├── 🔐 Auth/
     │   │   └── 📊 Dashboard/
     │   ├── 📂 services/
     │   ├── 📂 utils/
+    │   │   └── 🔐 auth.js
     │   └── ⚛️ App.jsx
     └── ⚡ vite.config.js
 ```
@@ -172,16 +183,18 @@ npm run dev
 ## 🎯 Usage Guide
 
 ### 🔐 Getting Started
-1. **Sign Up**: Create your account with email and password
-2. **Login**: Access your personal dashboard
-3. **Profile**: Upload your profile picture
+1. **Sign Up**: Create your account with email and password (autofill-protected forms)
+2. **Login**: Access your personal dashboard with session-based authentication
+3. **Profile**: Upload your profile picture and manage account settings
+4. **Theme**: Toggle between light and dark themes (syncs across all tabs)
 
 ### 💰 Managing Finances
-1. **Dashboard**: View real-time financial overview
+1. **Dashboard**: View real-time financial overview with theme support
 2. **Add Income**: Record your earnings by category
 3. **Track Expenses**: Monitor your spending patterns
 4. **Edit/Delete**: Manage transactions with hover controls
-5. **Export**: Download Excel reports of your data
+5. **Export**: One-click Excel export from sidebar navigation
+6. **Logout**: Tab-specific logout (other tabs remain authenticated)
 
 ### 📊 Analytics
 - View balance, income, and expense summaries
