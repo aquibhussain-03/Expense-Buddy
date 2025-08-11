@@ -32,7 +32,10 @@ const Login = () => {
 
         {/* Login Form */}
         <div className="bg-white rounded-2xl shadow-xl p-8">
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" autoComplete="off">
+            {/* Hidden dummy fields to prevent autofill */}
+            <input type="text" style={{display: 'none'}} autoComplete="off" />
+            <input type="password" style={{display: 'none'}} autoComplete="off" />
             {/* Email Field */}
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -50,12 +53,13 @@ const Login = () => {
                       message: 'Invalid email address'
                     }
                   })}
-                  type="email"
-                  autoComplete="new-email"
+                  type="text"
+                  name="email"
+                  autoComplete="nope"
                   autoCorrect="off"
                   autoCapitalize="off"
                   spellCheck="false"
-                  data-form-type="other"
+                  data-lpignore="true"
                   className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white text-black font-medium"
                   placeholder="Enter your email"
                 />
@@ -86,11 +90,12 @@ const Login = () => {
                     }
                   })}
                   type={showPassword ? 'text' : 'password'}
+                  name="password"
                   autoComplete="new-password"
                   autoCorrect="off"
                   autoCapitalize="off"
                   spellCheck="false"
-                  data-form-type="other"
+                  data-lpignore="true"
                   className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white text-black font-medium"
                   placeholder="Enter your password"
                 />

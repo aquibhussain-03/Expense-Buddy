@@ -33,19 +33,19 @@ const TransactionList = ({ transactions, onEdit }) => {
               <div className="flex items-center justify-between">
                 <div className="flex-1">
                   <div className="flex items-center justify-between">
-                    <h4 className="font-medium text-gray-900 dark:text-white">{transaction.title}</h4>
-                    <span className={`font-semibold ${
+                    <h4 className="font-medium text-sm sm:text-base text-gray-900 dark:text-white">{transaction.title}</h4>
+                    <span className={`font-semibold text-sm sm:text-base ${
                       transaction.type === 'income' ? 'text-green-600' : 'text-red-600'
                     }`}>
                       {transaction.type === 'income' ? '+' : '-'}{formatCurrency(transaction.amount)}
                     </span>
                   </div>
                   <div className="flex items-center justify-between mt-1">
-                    <span className="text-sm text-gray-500 dark:text-gray-400">{transaction.category}</span>
-                    <span className="text-sm text-gray-500 dark:text-gray-400">{formatDate(transaction.date)}</span>
+                    <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">{transaction.category}</span>
+                    <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">{formatDate(transaction.date)}</span>
                   </div>
                   {transaction.description && (
-                    <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">{transaction.description}</p>
+                    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mt-1">{transaction.description}</p>
                   )}
                 </div>
                 

@@ -101,9 +101,12 @@ const Expense = () => {
               </div>
             ) : (
               <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-8 text-center">
-                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <button
+                  onClick={() => setShowForm(true)}
+                  className="w-16 h-16 bg-red-100 hover:bg-red-200 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-200 transform hover:scale-110 cursor-pointer"
+                >
                   <FiPlus className="text-red-600" size={24} />
-                </div>
+                </button>
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Track your expenses</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">Click the "Add Expense" button to record a new expense</p>
               </div>

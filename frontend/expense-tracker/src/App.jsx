@@ -42,8 +42,10 @@ const App = () => {
 
 const Root = () => {
   const token = localStorage.getItem('token');
+  const isAuthenticated = sessionStorage.getItem('authenticated') === 'true';
   
-  if (!token) {
+  // Always redirect to login if no token or session auth
+  if (!token || !isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
   
@@ -59,8 +61,6 @@ const Root = () => {
       return <Navigate to="/login" replace />;
     }
     
-    // Set session auth for valid token
-    sessionStorage.setItem('authenticated', 'true');
     return <Navigate to="/dashboard" replace />;
   } catch (error) {
     localStorage.removeItem('token');

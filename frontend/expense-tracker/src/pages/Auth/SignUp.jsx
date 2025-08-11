@@ -30,7 +30,10 @@ const SignUp = () => {
 
         {/* SignUp Form */}
         <div className="bg-white rounded-2xl shadow-xl p-8">
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" autoComplete="off">
+            {/* Hidden dummy fields to prevent autofill */}
+            <input type="text" style={{display: 'none'}} autoComplete="off" />
+            <input type="password" style={{display: 'none'}} autoComplete="off" />
             {/* Name Field */}
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -49,6 +52,9 @@ const SignUp = () => {
                     }
                   })}
                   type="text"
+                  name="name"
+                  autoComplete="nope"
+                  data-lpignore="true"
                   className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white text-black font-medium"
                   placeholder="Enter your full name"
                 />
@@ -78,7 +84,10 @@ const SignUp = () => {
                       message: 'Invalid email address'
                     }
                   })}
-                  type="email"
+                  type="text"
+                  name="email"
+                  autoComplete="nope"
+                  data-lpignore="true"
                   className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white text-black font-medium"
                   placeholder="Enter your email"
                 />
@@ -109,6 +118,9 @@ const SignUp = () => {
                     }
                   })}
                   type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  autoComplete="new-password"
+                  data-lpignore="true"
                   className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white text-black font-medium"
                   placeholder="Create a password"
                 />
@@ -147,6 +159,9 @@ const SignUp = () => {
                     validate: value => value === password || 'Passwords do not match'
                   })}
                   type={showConfirmPassword ? 'text' : 'password'}
+                  name="confirmPassword"
+                  autoComplete="new-password"
+                  data-lpignore="true"
                   className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white text-black font-medium"
                   placeholder="Confirm your password"
                 />

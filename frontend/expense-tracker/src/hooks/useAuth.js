@@ -27,12 +27,9 @@ export const useRegister = () => {
   
   return useMutation({
     mutationFn: authAPI.register,
-    onSuccess: (response) => {
-      setAuthToken(response.data.token);
-      localStorage.setItem('userName', response.data.name);
-      sessionStorage.setItem('authenticated', 'true');
-      toast.success('Registration successful!');
-      navigate('/dashboard');
+    onSuccess: () => {
+      toast.success('Account created successfully! Please sign in.');
+      navigate('/login');
     },
     onError: (error) => {
       toast.error(error.response?.data?.message || 'Registration failed');

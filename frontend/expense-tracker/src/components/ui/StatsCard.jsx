@@ -17,8 +17,8 @@ const StatsCard = ({ title, amount, icon: Icon, color = 'primary', isCurrency = 
       <div className="relative z-10">
         <div className="flex items-center justify-between">
           <div className="flex-1">
-            <p className="text-sm opacity-90 font-medium mb-2">{title}</p>
-            <p className="text-3xl font-bold tracking-tight">
+            <p className="text-xs opacity-90 font-medium mb-2">{title}</p>
+            <p className="text-sm sm:text-lg md:text-xl lg:text-2xl font-bold tracking-tight">
               {typeof amount === 'number' && isCurrency ? formatCurrency(amount) : amount}
             </p>
           </div>

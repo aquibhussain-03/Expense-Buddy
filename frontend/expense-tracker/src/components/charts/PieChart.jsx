@@ -73,7 +73,7 @@ const PieChart = ({ transactions, type = 'expense' }) => {
             <h3 className="text-lg font-bold text-white capitalize">
               {type} by Category
             </h3>
-            <p className="text-white/80 text-sm">
+            <p className="text-white/80 text-xs">
               Total: {formatCurrency(total)}
             </p>
           </div>
@@ -108,36 +108,36 @@ const PieChart = ({ transactions, type = 'expense' }) => {
       
       <div className="p-6">
         {Object.keys(categoryData).length > 0 ? (
-          <div className="flex items-center space-x-6">
+          <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
             {/* Chart */}
-            <div className="w-48 h-48 relative">
+            <div className="w-32 h-32 sm:w-48 sm:h-48 relative flex-shrink-0">
               <Pie data={data} options={options} />
               {chartType === 'donut' && (
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
-                    <p className="text-2xl font-bold text-gray-800 dark:text-gray-100">{topCategories.length}</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Categories</p>
+                    <p className="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-100">{topCategories.length}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">Categories</p>
                   </div>
                 </div>
               )}
             </div>
             
             {/* Legend */}
-            <div className="flex-1 space-y-3">
+            <div className="flex-1 space-y-2 sm:space-y-3 w-full">
               {topCategories.map(([category, amount], index) => {
                 const percentage = ((amount / total) * 100).toFixed(1);
                 return (
-                  <div key={category} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
-                    <div className="flex items-center space-x-3">
+                  <div key={category} className="flex items-center justify-between p-2 sm:p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+                    <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1">
                       <div 
-                        className="w-4 h-4 rounded-full" 
+                        className="w-3 h-3 sm:w-4 sm:h-4 rounded-full flex-shrink-0" 
                         style={{ backgroundColor: CHART_COLORS[index] }}
                       ></div>
-                      <span className="font-medium text-gray-700 dark:text-gray-200">{category}</span>
+                      <span className="font-medium text-xs sm:text-sm text-gray-700 dark:text-gray-200 truncate">{category}</span>
                     </div>
-                    <div className="text-right">
-                      <p className="font-bold text-gray-800 dark:text-gray-100">{formatCurrency(amount)}</p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">{percentage}%</p>
+                    <div className="text-right flex-shrink-0">
+                      <p className="font-bold text-xs sm:text-sm text-gray-800 dark:text-gray-100">{formatCurrency(amount)}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">{percentage}%</p>
                     </div>
                   </div>
                 );
